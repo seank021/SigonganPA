@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { Text, Pressable } from 'react-native';
 import tw from 'twrnc';
 
 export const ButtonForm1 = ({ text, onPress }) => { // 초록 배경, 흰 글씨, 약간 둥근 모서리
