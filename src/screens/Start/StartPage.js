@@ -4,6 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
 
+import { ButtonForm1, ButtonForm2 } from "@forms/ButtonForm";
+
 export default function StartPage() {
     const nav = useNavigation();
     const goToChooseNicknamePage = () => {
@@ -21,13 +23,9 @@ export default function StartPage() {
                     우리의 시야를 조금씩 나누어{"\n"}모두가 더 넓은 세상을 보도록 합니다
                 </Text>
             </View>
-            <View style={tw`w-[90%] justify-center items-center gap-[20px] mb-[10%]`}>
-                <Pressable style={tw`w-full bg-[#66CA63] justify-center items-center rounded-2xl h-[60px]`} onPress={() => goToChooseNicknamePage()}>
-                    <Text style={tw`text-white text-[18px] font-semibold`}>사진 해설을 받고 싶어요</Text>
-                </Pressable>
-                <Pressable style={tw`w-full bg-[#FFF] justify-center items-center rounded-2xl h-[60px]`}>
-                    <Text style={tw`text-white text-[18px] font-semibold text-[#66CA63]`}>해설자로 활동할게요</Text>
-                </Pressable>
+            <View style={tw`w-full justify-center items-center gap-[20px] mb-[10%]`}>
+                <ButtonForm1 text="사진 해설을 받고 싶어요" onPress={() => goToChooseNicknamePage()} />
+                <ButtonForm2 text="해설자로 활동할게요" />
             </View>
         </SafeAreaView>
     );

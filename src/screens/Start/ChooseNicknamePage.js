@@ -4,6 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
 
+import { ButtonForm3 } from "@forms/ButtonForm";
+
 export default function StartPage({ setGoToHome, setNickname }) {
     const nav = useNavigation();
 
@@ -29,9 +31,7 @@ export default function StartPage({ setGoToHome, setNickname }) {
             <View style={tw`w-[90%] justify-center items-center gap-[10px] mb-[20%]`}>
                 <TextInput style={tw`w-full h-[60px] border-[1px] border-[#F6F6F6] bg-[#F6F6F6] rounded-3xl px-[20px]`} placeholder="닉네임 입력하기" placeholderTextColor={"#9CA4AB"} onChangeText={(text) => setNicknameInput(text)} />
             </View>
-            <Pressable style={tw`w-[90%] bg-[#66CA63] justify-center items-center rounded-3xl h-[60px]`} onPress={() => { setGoToHome(true); setNickname(nicknameInput); }}>
-                <Text style={tw`text-white text-[18px] font-semibold`}>브로디 시작하기</Text>
-            </Pressable>
+            <ButtonForm3 text="브로디 시작하기" onPress={() => { setGoToHome(true); setNickname(nicknameInput); }} />
         </SafeAreaView>
     );
 }
