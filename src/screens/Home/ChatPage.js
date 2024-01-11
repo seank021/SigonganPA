@@ -4,7 +4,7 @@ import tw from 'twrnc';
 
 export default function ChatPage({ nickname }) {
     return (
-        <View style={tw`flex-1 justify-center items-center bg-[#FEFEFE]`}>
+        <View style={tw`flex h-full justify-center items-center bg-[#FEFEFE]`}>
             <Text>Chat</Text>
             <Text>{nickname}</Text>
         </View>

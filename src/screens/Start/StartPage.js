@@ -13,7 +13,7 @@ export default function StartPage() {
     };
 
     return (
-        <SafeAreaView style={tw`flex-1 flex-col justify-around items-center bg-[#B9E3F1]`}>
+        <SafeAreaView style={tw`flex flex-col h-full justify-around items-center bg-[#B9E3F1]`}>
             <Image style={tw`w-[85%] h-[40%] mt-[10%]`} source={require("@images/startImage.png")} />
             <View style={tw`justify-center items-center gap-[10px]`}>
                 <Text style={tw`text-[#FFF] text-2xl font-bold text-center leading-[34px]`}>

@@ -16,7 +16,7 @@ export default function StartPage({ setGoToHome, setNickname }) {
     };
 
     return (
-        <SafeAreaView style={tw`flex-1 flex-col items-center bg-[#FEFEFE]`}>
+        <SafeAreaView style={tw`flex flex-col h-full items-center bg-[#FEFEFE]`}>
             <Pressable style={tw`self-start ml-[10%] my-[10%]`} onPress={() => goBack()}>
                 <Image style={tw`w-[40px] h-[40px]`} source={require("@images/arrow_left.png")} />
             </Pressable>
