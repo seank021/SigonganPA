@@ -4,7 +4,7 @@ import tw from 'twrnc';
 
 export const WelcomeHeader = ({ nickname, profileImage }) => {
     return (
-        <View style={tw`w-[90%] flex-row justify-between items-center absolute top-[5%]`}>
+        <View style={tw`w-[90%] flex-row justify-between items-center absolute top-10`}>
             <View style={tw`flex-row items-center`}>
                 <Image style={tw`w-[60px] h-[60px]`} source={profileImage} />
                 <View style={tw`flex-col ml-[10px]`}>
