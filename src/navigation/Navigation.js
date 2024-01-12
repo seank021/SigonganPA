@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { Image } from 'react-native';
 import tw from 'twrnc';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -34,7 +34,16 @@ const Navigation = () => {
         );
     };
 
-    const HomeStack = () => {
+    const HomeStack = ({ navigation, route }) => {
+        useLayoutEffect(() => {
+            const routeName = getFocusedRouteNameFromRoute(route);
+            if (routeName === "ChatPage") {
+                navigation.setOptions({ tabBarStyle: { display: 'none' } });
+            } else {
+                navigation.setOptions({ tabBarStyle: tw`h-[80px] border-t-[1px] border-[#F8F8F8]` });
+            }
+        }, [navigation, route]);
+
         return (
             <Stack.Navigator initialRouteName='HomePage' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="HomePage" children={() => <HomePage nickname={nickname} />} />
