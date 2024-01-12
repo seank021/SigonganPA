@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, ScrollView, TextInput, Pressable } from 'react-native';
 import tw from 'twrnc';
 
@@ -9,16 +9,54 @@ export default function ChatPage() {
     const myProfileImg = require("@images/profile_image.png");
     const otherProfileImg = require("@images/other_profile_image.png");
 
+    const [chatMessages, setChatMessages] = useState([
+        { type: 'myMessage', image: require("@images/text_image_1.png"), text: null, time: null, profile: myProfileImg },
+        { type: 'myMessage', image: null, text: "고양이가 어떤 모습으로 있는지 자세히 설명해주세요", time: null, profile: myProfileImg },
+        { type: 'myMessage', image: null, text: "몇 마리인지도요~", time: "15:42 PM", profile: null },
+        { type: 'otherMessage', image: null, text: "세마리의 고양이가 나란히 밥그릇의 사료를 먹고 있는 모습을 위에서 촬영한 사진입니다", time: "15:42 PM", profile: otherProfileImg },
+        { type: 'myMessage', image: null, text: "감사합니다!", time: "15:42 PM", profile: myProfileImg },
+    ]);
+
+    const [text, setText] = useState("");
+
+    const sendMessage = () => {
+        if (text.trim() !== "") {
+            setChatMessages(prevMessages => [
+                ...prevMessages, 
+                { type: 'myMessage', image: null, text: text, time: getCurrentTime(), profile: myProfileImg }
+            ]);
+            setText("");
+        }
+    }
+
+    const getCurrentTime = () => {
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let ampm = hours >= 12 ? 'PM' : 'AM';
+        hours %= 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        let strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+    }
+
     return (
         <View style={tw`flex h-full items-center bg-[#FEFEFE]`}>
             <PageHeader pageName="채팅" />
 
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={tw`items-center gap-[10px]`} style={tw`w-full mt-[30%] mb-[25%]`}>
-                <ChatForm1 image={require("@images/text_image_1.png")} text={null} time={null} profile={myProfileImg} />
-                <ChatForm1 image={null} text="고양이가 어떤 모습으로 있는지 자세히 설명해주세요" time={null} profile={myProfileImg} /> 
-                <ChatForm1 image={null} text="몇 마리인지도요~" time="15:42 PM" profile={null} />
-                <ChatForm2 image={null} text="세마리의 고양이가 나란히 밥그릇의 사료를 먹고 있는 모습을 위에서 촬영한 사진입니다" time="15:42 PM" profile={otherProfileImg} />
-                <ChatForm1 image={null} text="감사합니다!" time="15:42 PM" profile={myProfileImg} />
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={tw`items-center gap-[10px]`} style={tw`w-full m-[30%]`}>
+                {chatMessages.map((message, index) => {
+                    if (message.type === 'myMessage') {
+                        return (
+                            <ChatForm1 key={index} image={message.image} text={message.text} time={message.time} profile={message.profile} />
+                        );
+                    } else {
+                        return (
+                            <ChatForm2 key={index} image={message.image} text={message.text} time={message.time} profile={message.profile} />
+                        );
+                    }
+                })}
             </ScrollView>
             
             <View style={tw`absolute bottom-[5%] w-full h-[50px] flex justify-center items-center`}>
@@ -27,8 +65,8 @@ export default function ChatPage() {
                         <Image source={require("@images/file.png")} style={tw`w-[30px] h-[30px]`} />
                     </Pressable>
                     <View style={tw`absolute ml-[45px] border-[#E9EBED] border-[1px] h-[25px]`} />
-                    <TextInput style={tw`text-[#000] text-sm font-normal ml-[55px]`} placeholderTextColor={"#BFC3C6"} placeholder='메시지 입력...' />
-                    <Pressable style={tw`absolute right-[10px]`}>
+                    <TextInput style={tw`text-[#000] text-sm font-normal ml-[55px]`} placeholderTextColor={"#BFC3C6"} placeholder='메시지 입력...' onChangeText={text => setText(text)} value={text} />
+                    <Pressable style={tw`absolute right-[10px]`} onPress={sendMessage}>
                         <Image source={require("@images/send.png")} style={tw`w-[40px] h-[40px]`} />
                     </Pressable>
                 </View>
