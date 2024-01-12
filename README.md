@@ -1,79 +1,73 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# [SigonganPA] Broady
 
-# Getting Started
+---
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 0. 주의사항
 
-## Step 1: Start the Metro Server
+- LG Gram으로 개발하여 안드로이드만 지원합니다.
+- Figma에서 이미지 파일 다운로드나 세부 간격 등의 확인이 불가하였기 때문에, 디자인에 대한 정확한 구현은 어려울 수 있습니다. 필요한 이미지는 스크린샷 및 배경 지우기 등을 하여 구현하였고, 세부 간격은 대략적으로 구현하였으며, 색상은 Color Picker Extension을 사용하여 구현하였습니다.
+- Tailwind CSS를 사용하였습니다.
+- 입력한 닉네임을 바탕으로 앱 내의 이름이 결정됩니다.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 1. 개발 일지
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### 2024.01.12.
 
-```bash
-# using npm
-npm start
+- 레포지토리 생성 (https://github.com/seank021/SigonganPA/)
+- 프로젝트 기본 설정
+- 온보딩 화면 구현
+- 각 페이지 뷰 구현
+- 재사용 Form 구현 (ButtonForm, WecomeHeader)
+- 앱 이름, 앱 아이콘 설정
 
-# OR using Yarn
-yarn start
-```
+### 2024.01.13.
 
-## Step 2: Start your Application
+- 스타일 설정 및 수정
+- 채팅 화면 구현
+- 재사용 Form 구현 (PageHeader, ChatForm)
+- 스플래시 화면 구현
+- README.md 작성
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## 2. 실행 커맨드
 
-### For Android
+1. apk 파일로 실행
 
-```bash
-# using npm
-npm run android
+   - apk 파일을 모바일 기기에 설치하여 앱을 실행합니다.
 
-# OR using Yarn
-yarn android
-```
+2. git clone 후 실행
 
-### For iOS
+   - npm run android (npm install 후 실행)
 
-```bash
-# using npm
-npm run ios
+## 3. 실행 화면
 
-# OR using Yarn
-yarn ios
-```
+### 0) 스플래시 화면
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+![스플래시 화면](./images/0.png)
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### 1) 온보딩 화면
 
-## Step 3: Modifying your App
+![온보딩 화면](./images/1.png)
 
-Now that you have successfully run the app, let's modify it.
+### 2) 닉네임 입력 화면
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+![닉네임 입력 화면](./images/2.png)
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+### 3) 홈 화면
 
-## Congratulations! :tada:
+![홈 화면](./images/3.png)
 
-You've successfully run and modified your React Native App. :partying_face:
+### 4) 채팅 화면
 
-### Now what?
+![채팅 화면](./images/4.png)
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+### 5) AI 해설 화면
 
-# Troubleshooting
+![AI 해설 화면](./images/5.png)
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+### 6) 저장 화면
 
-# Learn More
+![저장 화면](./images/6.png)
 
-To learn more about React Native, take a look at the following resources:
+### 7) MY 화면
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+![MY 화면](./images/7.png)

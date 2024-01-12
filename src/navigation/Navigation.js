@@ -47,7 +47,7 @@ const Navigation = () => {
         return (
             <Stack.Navigator initialRouteName='HomePage' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="HomePage" children={() => <HomePage nickname={nickname} />} />
-                <Stack.Screen name="ChatPage" children={() => <ChatPage nickname={nickname} />} />
+                <Stack.Screen name="ChatPage" children={() => <ChatPage />} />
             </Stack.Navigator>
         );
     };

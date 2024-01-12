@@ -11,7 +11,7 @@ export const PageHeader = ({ pageName }) => {
     };
 
     return (
-        <View style={tw`flex-row w-[80%] absolute top-10 items-center justify-between`}>
+        <View style={tw`flex-row w-[80%] absolute top-10 items-center justify-between z-10`}>
             <Pressable onPress={goBack}>
                 <Image style={tw`w-[40px] h-[40px]`} source={require("@images/arrow_left.png")} />
             </Pressable>
