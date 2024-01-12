@@ -20,6 +20,7 @@ import AIExplanationPage from '@screens/AIExplanation/AIExplanationPage';
 import SavedPage from '@screens/Saved/SavedPage';
 
 import MyPage from '@screens/MyPage/MyPage';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Navigation = () => {
     const [goToHome, setGoToHome] = useState(false);
@@ -127,9 +128,11 @@ const Navigation = () => {
     };
 
     return (
-        <NavigationContainer>
-            {goToHome ? <Tabs /> : <AuthStack />}
-        </NavigationContainer>
+        <SafeAreaView style={tw`flex h-full`}>
+            <NavigationContainer>
+                {goToHome ? <Tabs /> : <AuthStack />}
+            </NavigationContainer>
+        </SafeAreaView>
     );
 };
 
