@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ScrollView, TextInput, Pressable } from 'react-native';
+import { View, Image, ScrollView, TextInput, Pressable, Text } from 'react-native';
 import tw from 'twrnc';
+import Modal from 'react-native-modal';
 
 import { PageHeader } from '@forms/PageHeader';
 import { ChatForm1, ChatForm2 } from '@forms/ChatForm';
@@ -8,7 +9,6 @@ import { ChatForm1, ChatForm2 } from '@forms/ChatForm';
 export default function ChatPage() {
     const myProfileImg = require("@images/profile_image.png");
     const otherProfileImg = require("@images/other_profile_image.png");
-
     const [chatMessages, setChatMessages] = useState([
         { type: 'myMessage', image: require("@images/text_image_1.png"), text: null, time: null, profile: myProfileImg },
         { type: 'myMessage', image: null, text: "고양이가 어떤 모습으로 있는지 자세히 설명해주세요", time: null, profile: myProfileImg },
@@ -17,6 +17,8 @@ export default function ChatPage() {
         { type: 'myMessage', image: null, text: "감사합니다!", time: "15:42 PM", profile: myProfileImg },
     ]);
 
+    const [modalVisible, setModalVisible] = useState(false);
+    
     const [text, setText] = useState("");
 
     const sendMessage = () => {
@@ -61,7 +63,7 @@ export default function ChatPage() {
             
             <View style={tw`absolute bottom-[5%] w-full h-[50px] flex justify-center items-center`}>
                 <View style={tw`w-[90%] h-full flex justify-center border-[1px] border-[#E9EBED] bg-[#F6F6F6] rounded-[25px]`}>
-                    <Pressable style={tw`absolute left-[10px]`}>
+                    <Pressable style={tw`absolute left-[10px]`} onPress={() => setModalVisible(true)}>
                         <Image source={require("@images/file.png")} style={tw`w-[30px] h-[30px]`} />
                     </Pressable>
                     <View style={tw`absolute ml-[45px] border-[#E9EBED] border-[1px] h-[25px]`} />
@@ -71,6 +73,21 @@ export default function ChatPage() {
                     </Pressable>
                 </View>
             </View>
+
+            <Modal style={tw`m-0`} animationIn={"slideInUp"} animationOut={"slideOutDown"} transparent={true} isVisible={modalVisible} hasBackdrop={true} backdropOpacity={0.5} onBackdropPress={() => setModalVisible(false)}>
+                <View style={tw`justify-end h-full`}>
+                    <View style={tw`flex-col justify-center items-start h-[180px] bg-[#FFF] rounded-t-[30px] gap-[15px]`}>
+                        <Pressable style={tw`flex-row justify-center items-center gap-[10px] ml-[25%]`} onPress={() => setModalVisible(false)}>
+                            <Image source={require("@images/camera.png")} style={tw`w-[50px] h-[50px]`} />
+                            <Text style={tw`text-[#000] text-base font-semibold`}>직접 촬영하기</Text>
+                        </Pressable>
+                        <Pressable style={tw`flex-row justify-center items-center gap-[10px] ml-[25%]`} onPress={() => setModalVisible(false)}>
+                            <Image source={require("@images/gallery.png")} style={tw`w-[50px] h-[50px]`} />
+                            <Text style={tw`text-[#000] text-base font-semibold`}>갤러리에서 고르기</Text>
+                        </Pressable>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }
