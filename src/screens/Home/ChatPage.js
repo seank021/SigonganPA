@@ -23,10 +23,17 @@ export default function ChatPage() {
 
     const sendMessage = () => {
         if (text.trim() !== "") {
-            setChatMessages(prevMessages => [
-                ...prevMessages, 
-                { type: 'myMessage', image: null, text: text, time: getCurrentTime(), profile: myProfileImg }
-            ]);
+            if (text.startsWith("/")) { // 상대방이 보내는 메시지
+                setChatMessages(prevMessages => [
+                    ...prevMessages, 
+                    { type: 'otherMessage', image: null, text: text.substring(1,), time: getCurrentTime(), profile: otherProfileImg }
+                ]);
+            } else { // 내가 보내는 메시지
+                setChatMessages(prevMessages => [
+                    ...prevMessages, 
+                    { type: 'myMessage', image: null, text: text, time: getCurrentTime(), profile: myProfileImg }
+                ]);
+            }
             setText("");
         }
     }
